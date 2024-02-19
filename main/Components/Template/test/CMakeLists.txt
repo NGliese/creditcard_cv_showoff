@@ -10,9 +10,8 @@ add_executable(${LIBNAME}_tests )
 set(COSTUM_TEST_FILES ${COSTUM_TEST_FILES} "${LIBNAME}_tests;" CACHE STRING "avaliable build tests" FORCE)
 
 
-
-target_include_directories(${LIBNAME}_tests PRIVATE mock test )
-target_link_libraries(${LIBNAME}_tests PRIVATE  CppUTest CppUTestExt ComponentModule ${COSTUM_LIBRARIES})
+target_include_directories( ${LIBNAME}_tests PRIVATE mock test )
+target_link_libraries( ${LIBNAME}_tests PRIVATE  GTest::gtest_main ComponentModule ${COSTUM_LIBRARIES})
 
 # Create the test inside the test folder and rename it to "tests" for vscode to easily detect it 
 set_target_properties ( ${LIBNAME}_tests  PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
@@ -24,13 +23,13 @@ set_target_properties(${LIBNAME}_tests PROPERTIES OUTPUT_NAME "tests")
 #	In the following the user needs to specify the test files #
 #	in the "target_sources(  )" command.					  #
 #	example of syntax: 										  #
-#       target_sources(${LIBNAME}_tests PRIVATE test_main.cpp #
+#       target_sources( tests PRIVATE test_main.cpp #
 #       test/time_test.cpp  # <- test file					  #
 #       )													  #
 #															  #
 ###############################################################
-target_sources(${LIBNAME}_tests PRIVATE test_main.cpp
-test/ADC_test.cpp
+target_sources( ${LIBNAME}_tests PRIVATE test_main.cpp
+test/simple_test.cpp
 )
 ###############################################################
 #															  #

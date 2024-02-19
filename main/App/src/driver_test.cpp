@@ -22,7 +22,6 @@
 
 #include "../../Components/Timeservice/include/Timeservice.hpp"
 #include "../../Components/uart/include/uart_hal.hpp"
-#include "../../Components/CO2Sensor/include/s8lp_sensor.hpp"
 //#define DEBUG // default uncommeted
 
 #ifdef DEBUG
@@ -97,6 +96,8 @@ bool driver_test::run_uart_write_read()
     uart.close();
 
 }
+
+/*
 constexpr uint8_t ANY_ADDRESS = 0xFE;
 constexpr uint8_t READ_INPUT_REGISTER = 0x04;
 constexpr uint8_t INPUT_REGISTER1_ADDRESS_HIGH = 0x00;
@@ -155,27 +156,4 @@ bool driver_test::run_uart_write_read_s8lp()
  uart.close();
 
 }
-
-bool driver_test::run_s8lp_sensor()
-{
-    #ifdef DEBUG
-    LOG_PRINT_INFO(LOG_TAG, ">> driver_test::run_s8lp_sensor >> ");
-#endif
-
-    s8lp_sensor s8lp;
-    s8lp.initialize();
-
-    while(1)
-    {
-        std::cout << "S8LP test: ... " << std::endl;
-
-        uint16_t co2_level = 0;
-        s8lp.measure(co2_level);
-        // print co2 level in decimal
-        std::cout << "co2_level: " << std::dec << co2_level << std::endl;
-        // sleep for 1 sec
-        Timeservice::wait_sec(1);
-
-    }
-
-}
+*/

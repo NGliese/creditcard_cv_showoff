@@ -4,7 +4,9 @@ We must always set the miminum required version
 This will also explicit set the cmake behavior.
 It is recommendend to use 3.17+ due to some changes (?)
 ]]
-cmake_minimum_required(VERSION 3.18.4)
+
+
+cmake_minimum_required(VERSION 3.14)
 
 project(ComponentModule
 	VERSION 1.0
@@ -12,10 +14,9 @@ project(ComponentModule
 	LANGUAGES C CXX)
 
 
-#include CPM.cmake module for package handling
-#include(cmake/CPM.cmake)
 
-set(CMAKE_CXX_STANDARD 17)
+# GoogleTest requires at least C++14
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #include(cmake/BuildOptions.cmake)
@@ -50,15 +51,17 @@ add_compile_definitions(
 #							Install CppUtest											  #	
 ###########################################################################################
 
+
+
 include(FetchContent)
 FetchContent_Declare(
-    CppUTest
-    GIT_REPOSITORY https://github.com/cpputest/cpputest.git
-    GIT_TAG        v4.0#latest-passing-build # or use release tag, eg. v3.8
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
-# Set this to ON if you want to have the CppUTests in your project as well.
-set(TESTS OFF CACHE BOOL "Switch off CppUTest Test build")
-FetchContent_MakeAvailable(CppUTest)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 # then use : target_link_libraries(run_tests PRIVATE CppUTest CppUTestExt)
 
 ####################################################################################
@@ -77,16 +80,17 @@ add_library(ComponentModule STATIC)
 
 ################################################
 ## add the source folder to the cmake list:
-add_subdirectory(Timeservice)
-add_subdirectory(i2c)
-add_subdirectory(wifi)
-add_subdirectory(http)
-add_subdirectory(adc)
-add_subdirectory(am2320)
-add_subdirectory(utils)
-add_subdirectory(CO2Sensor)
-add_subdirectory(uart)
-add_subdirectory(bluetooth)
+#add_subdirectory(Timeservice)
+#add_subdirectory(i2c)
+#add_subdirectory(wifi)
+#add_subdirectory(http)
+#add_subdirectory(adc)
+#add_subdirectory(am2320)
+#add_subdirectory(utils)
+#add_subdirectory(CO2Sensor)
+#add_subdirectory(uart)
+#add_subdirectory(bluetooth)
+add_subdirectory(button)
 
 
 

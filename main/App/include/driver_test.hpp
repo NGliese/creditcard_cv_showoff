@@ -50,9 +50,7 @@ class driver_test {
       virtual ~driver_test(void);
       bool run_uart_write();
       bool run_uart_write_read();
-      bool run_uart_write_read_s8lp();
 
-      bool run_s8lp_sensor();
       };
 
 

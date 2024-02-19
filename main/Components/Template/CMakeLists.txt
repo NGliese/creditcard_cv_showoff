@@ -5,11 +5,9 @@ This will also explicit set the cmake behavior.
 It is recommendend to use 3.17+ due to some changes (?)
 ]]
 cmake_minimum_required(VERSION 3.18.4)
-set(LIBNAME AM2320)
+set(LIBNAME Button)
 
-set(COSTUM_SRC_FILES ${COSTUM_SRC_FILES} "${CMAKE_CURRENT_LIST_DIR}/src/AM2320_Base.cpp;" CACHE STRING "avaliable build src" FORCE)
-set(COSTUM_SRC_FILES ${COSTUM_SRC_FILES} "${CMAKE_CURRENT_LIST_DIR}/src/AM2320_Temperature.cpp;" CACHE STRING "avaliable build src" FORCE)
-set(COSTUM_SRC_FILES ${COSTUM_SRC_FILES} "${CMAKE_CURRENT_LIST_DIR}/src/AM2320_Humidity.cpp;" CACHE STRING "avaliable build src" FORCE)
+set(COSTUM_SRC_FILES ${COSTUM_SRC_FILES} "${CMAKE_CURRENT_LIST_DIR}/src/Button.cpp;" CACHE STRING "avaliable build src" FORCE)
 
 set(COSTUM_INC_FILES ${COSTUM_INC_FILES} "${CMAKE_CURRENT_LIST_DIR}/include" CACHE STRING "avaliable build inc" FORCE)
 

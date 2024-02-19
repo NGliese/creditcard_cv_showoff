@@ -10,8 +10,6 @@
 
 #include "App/include/plc_mock.hpp"
 #include "App/include/wifi_test.hpp"
-#include "App/include/moist_sensor.hpp"
-#include "App/include/co2sensor_test.hpp"
 #include "App/include/driver_test.hpp"
 #include "App/include/ble_test.hpp"
 #include "sdkconfig.h"
