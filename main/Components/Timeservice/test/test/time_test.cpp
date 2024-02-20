@@ -7,21 +7,18 @@
 
 #include <iostream>
 
-#include "CppUTest/TestHarness.h"
-
 #include "../../include/Timeservice.hpp"
 #include <sys/time.h>
 
-TEST_GROUP(TIME_GRP){void setup(){
-
-} void teardown(){
-	// Uninit stuff
-
-}};
 
 
-// test init
-TEST(TIME_GRP, wait_sec)
+#include <gtest/gtest.h>
+
+// Include the header for the code you want to test
+//#include "my_code.h"
+
+// Write test cases
+TEST(MyCodeTests, TestFunction1) 
 {
 	// get start time
 	struct timeval start, end;
@@ -38,7 +35,7 @@ TEST(TIME_GRP, wait_sec)
 	time_taken = (time_taken + (end.tv_usec - start.tv_usec)) * 1e-6;
 
 	// check if time is within 10% of 1 sec
-	CHECK_TRUE(time_taken > 0.9);
-	CHECK_TRUE(time_taken < 1.1);
+	ASSERT_TRUE(time_taken > 0.9);
+	ASSERT_TRUE(time_taken < 1.1);
 	
 }

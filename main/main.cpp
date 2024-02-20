@@ -7,11 +7,7 @@
    CONDITIONS OF ANY KIND, either express or implied.
 */
 #include <iostream>
-
-#include "App/include/plc_mock.hpp"
-#include "App/include/wifi_test.hpp"
-#include "App/include/driver_test.hpp"
-#include "App/include/ble_test.hpp"
+#include <button_test.hpp>
 #include "sdkconfig.h"
 #include <driver/gpio.h>
 #include <esp_err.h>
@@ -19,14 +15,15 @@
 extern "C" void app_main(void)
 {
 
-  //  plc_mock plc;
-  //  plc.run();
-    std::cout << "Hello World!\n";
- // co2sensor_test test;
- // test.run();
- // wifi_test test;
- // test.run_access_point();
+  std::cout << "Hello, World!" << std::endl;
+  std::cout << "This is ESP32 chip with " << CONFIG_IDF_TARGET << " chip" << std::endl;
 
-  ble_test test;
-  test.run_test();
+  /*
+    RUN THE EXAMPLES BELOW ONE AT A TIME
+  */
+
+ button_test test;
+  test.run();
+
+  std::cout << "Stopping program" << std::endl;
 }

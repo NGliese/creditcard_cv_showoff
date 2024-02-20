@@ -46,6 +46,10 @@ clean:
 test: .build-test-env .run_test;
 
 
+.PHONY: open_coverage
+open_coverage:
+	  cd ./main/Components/build && env "BROWSER=firefox" && xdg-open ./reports/coverage/html/index.html;
+
 .PHONY: help
 help: 
 	  @echo "Usage: make [target]"

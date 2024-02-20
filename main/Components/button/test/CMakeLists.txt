@@ -7,11 +7,11 @@ cmake_minimum_required(VERSION 3.18.4)
 
 add_executable(${LIBNAME}_tests )
 
-set(COSTUM_TEST_FILES ${COSTUM_TEST_FILES} "${LIBNAME}_tests;" CACHE STRING "avaliable build tests" FORCE)
+set(CUSTOM_TEST_FILES ${CUSTOM_TEST_FILES} "${LIBNAME}_tests;" CACHE STRING "avaliable build tests" FORCE)
 
 
 target_include_directories( ${LIBNAME}_tests PRIVATE mock test )
-target_link_libraries( ${LIBNAME}_tests PRIVATE  GTest::gtest_main ComponentModule ${COSTUM_LIBRARIES})
+target_link_libraries( ${LIBNAME}_tests PRIVATE  GTest::gtest_main  ComponentModule ${CUSTOM_LIBRARIES})
 
 # Create the test inside the test folder and rename it to "tests" for vscode to easily detect it 
 set_target_properties ( ${LIBNAME}_tests  PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
@@ -40,6 +40,8 @@ test/simple_test.cpp
 add_test(NAME ${LIBNAME}.Test
 	COMMAND ${LIBNAME}_tests
 )
+
+
 
 
 
