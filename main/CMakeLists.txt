@@ -24,6 +24,8 @@ idf_component_register(SRC_DIRS "."
              SRC_DIRS "./Components/gpio/src"
              INCLUDE_DIRS "./Components/gpio/include" 
              INCLUDE_DIRS "./Components/boards/esp32_boards/include"
+             SRC_DIRS "./Components/button/src"
+             INCLUDE_DIRS "./Components/button/include"
              )
 
 

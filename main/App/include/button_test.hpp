@@ -29,6 +29,7 @@
  +------------------------------------------------------------------------------*/
 
 #include <Timeservice.hpp>
+#include <Button.hpp>
 
 /*----------------- DEFAULT INCLUDE -------------------------------------------*/
 
@@ -51,6 +52,8 @@ class button_test {
         button_test(void);
         virtual ~button_test(void);
         void run(void);
+
+       static void cb_button_pressed(void* obj);
     };
 
 #endif /*main_App_include_button_test_hpp*/

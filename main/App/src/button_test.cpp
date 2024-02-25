@@ -19,7 +19,7 @@
  ***********************************************************************************************/
 
 #include "../include/button_test.hpp"
-
+#include <HAL_GPIO_ESP32.hpp>
 //#define DEBUG // default uncommeted
 
 #ifdef DEBUG
@@ -36,19 +36,32 @@ button_test::~button_test()
 
 }
 
+static bool button_pressed = false;
+
+void button_test::cb_button_pressed(void *orb)
+{
+    button_pressed = true;
+}
+
 void button_test::run()
 {
     std::cout << "This is the button test" << std::endl;
     std::cout << "Press the button to see the result" << std::endl;
-
-    // Set the GPIO pin as input
-
+    // Create a button object
+    Button<HAL_GPIO_ESP32> m_button(gpio_num_t::GPIO_NUM_21);
+    // Install the interrupt
+    m_button.installInterrupt(HAL_GPIO_ESP32::io_intr_t::FALLING_EDGE, &button_test::cb_button_pressed);
     while(1)
     {
-        // Read the GPIO pin
-        // If the button is pressed, print "Button pressed"
-        // If the button is not pressed, print "Button not pressed"
-        std::cout << "waiting 5 sec" << std::endl;
-        Timeservice::wait_sec(5);
+        
+ 
+        if(button_pressed)
+        {
+            m_button.disableInterrupt();
+            button_pressed = false;
+            std::cout << "Button pressed" << std::endl;    
+            m_button.enableInterrupt();        
+        }
+        Timeservice::wait_ms(50);
     }
 }
