@@ -26,6 +26,8 @@ idf_component_register(SRC_DIRS "."
              INCLUDE_DIRS "./Components/boards/esp32_boards/include"
              SRC_DIRS "./Components/button/src"
              INCLUDE_DIRS "./Components/button/include"
+                SRC_DIRS "./Components/lcd_display/src"
+                INCLUDE_DIRS "./Components/lcd_display/include"
              )
 
 

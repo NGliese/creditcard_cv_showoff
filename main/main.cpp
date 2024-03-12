@@ -7,26 +7,28 @@
    CONDITIONS OF ANY KIND, either express or implied.
 */
 
-
-#include <iostream>
-#include <button_test.hpp>
-#include "sdkconfig.h"
 #include <driver/gpio.h>
 #include <esp_err.h>
 #include <esp_log.h>
 
-extern "C" void app_main(void)
-{
+#include <button_test.hpp>
+#include <iostream>
+#include <lcd_test.hpp>
 
+#include "sdkconfig.h"
+
+extern "C" void app_main(void) {
   std::cout << "Hello, World!" << std::endl;
-  std::cout << "This is ESP32 chip with " << CONFIG_IDF_TARGET << " chip" << std::endl;
+  std::cout << "This is ESP32 chip with " << CONFIG_IDF_TARGET << " chip"
+            << std::endl;
 
   /*
     RUN THE EXAMPLES BELOW ONE AT A TIME
   */
 
- button_test test;
-  test.run();
-
+  // button_test test;
+  //  test.run();
+  lcd_test lcd;
+  lcd.run();
   std::cout << "Stopping program" << std::endl;
 }

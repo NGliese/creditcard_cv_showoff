@@ -1,7 +1,7 @@
 #ifndef main_App_include_button_test_hpp
 #define main_App_include_button_test_hpp
 /*------------------------------------------------------------------------------+
- |   		 	C L A S S   I N F O R M A T I O N                               |
+ |   		 	C L A S S   I N F O R M A T I O N |
  +------------------------------------------------------------------------------+
  |  ToDo: check auto generated function comment
  |
@@ -25,35 +25,35 @@
  +-----------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------+
- |   		 					Includes                     		            |
+ |   		 					Includes |
  +------------------------------------------------------------------------------*/
 
-#include <Timeservice.hpp>
 #include <Button.hpp>
+#include <Timeservice.hpp>
 
-/*----------------- DEFAULT INCLUDE -------------------------------------------*/
+/*----------------- DEFAULT INCLUDE
+ * -------------------------------------------*/
 
 /*-----------------------------------------------------------------------------*/
 
 #include <iostream>
 
 /*------------------------------------------------------------------------------+
- |                               Typedef                                        |
+ |                               Typedef |
  +------------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------+
- |   		 					 Class                     		                |
+ |   		 					 Class |
  +------------------------------------------------------------------------------*/
 
-
 class button_test {
+ public:
+  button_test(void);
+  virtual ~button_test(void);
+  void run(void);
 
-    public:
-        button_test(void);
-        virtual ~button_test(void);
-        void run(void);
-
-       static void cb_button_pressed(void* obj);
-    };
+  static void cb_sw1_button_pressed(void* obj);
+  static void cb_sw2_button_pressed(void* obj);
+};
 
 #endif /*main_App_include_button_test_hpp*/

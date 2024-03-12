@@ -1,16 +1,16 @@
-#ifndef main_Components_GPIO_include_HAL_GPIO_ESP32_hpp
-#define main_Components_GPIO_include_HAL_GPIO_ESP32_hpp
+#ifndef main_Components_lcd_display_include_lcd_mock_hpp
+#define main_Components_lcd_display_include_lcd_mock_hpp
 /*------------------------------------------------------------------------------+
  |   		 	C L A S S   I N F O R M A T I O N |
  +------------------------------------------------------------------------------+
  |  ToDo: check auto generated function comment
  |
- |  Function Name:  HAL_GPIO_ESP32.hpp
+ |  Function Name:  lcd_mock.hpp
  |
  |  Author       :  Nikolaj Gliese Pedersen
  |  Email 	      :  <nikolajgliese@tutanota.com>
  |
- |  Description  :  This class, HAL_GPIO_ESP32.hpp, is designed as:
+ |  Description  :  This class, lcd_mock.hpp, is designed as:
  |
  |
  |
@@ -31,41 +31,38 @@
 /*----------------- DEFAULT INCLUDE
  * -------------------------------------------*/
 
+#include "hal_base.hpp"
+
 /*-----------------------------------------------------------------------------*/
 
 #include <iostream>
 
-#include "HAL_BASE.hpp"
 /*------------------------------------------------------------------------------+
  |                               Typedef |
  +------------------------------------------------------------------------------*/
-#ifdef __ESP32__
-#include <driver/gpio.h>
-#else
-typedef int gpio_num_t;
-#endif
+
 /*------------------------------------------------------------------------------+
  |   		 					 Class |
  +------------------------------------------------------------------------------*/
 
-class HAL_GPIO_ESP32 final : public HAL_BASE<gpio_num_t> {
-  typedef gpio_num_t pin_type_t;
-
+class lcd_mock final : public hal_base {
  public:
-  HAL_GPIO_ESP32(const gpio_num_t& pin) : HAL_BASE<gpio_num_t>(pin) {
-    std::cout << "HAL_GPIO_ESP32: " << pin << std::endl;
-  };
-  HAL_GPIO_ESP32(const HAL_GPIO_ESP32& other) =
-      delete;  // delete copy constructor
-  virtual ~HAL_GPIO_ESP32(void);
-  bool setDirection(const HAL_BASE<gpio_num_t>::io_def_t& dir) override;
-  bool setValue(const HAL_BASE<gpio_num_t>::io_val_t& val) override;
-  HAL_BASE<gpio_num_t>::io_val_t getValue() const override;
-  bool installInterruptDriver(
-      void (*callbackfunction)(void*),
-      const HAL_BASE<gpio_num_t>::io_intr_t& intr) override;
-  bool enableInterrupt() override;
-  bool disableInterrupt() override;
+  lcd_mock(void);
+  virtual ~lcd_mock(void);
+  bool init() override;
+    bool deinit() override;
+  bool clear() override;
+  bool write(const char* data) override;
+  bool setCursor(int x, int y) override;
+
+  // its ment to be public for testing
+  bool m_init_called = false;
+  bool m_clear_called = false;
+  bool m_write_called = false;
+  bool m_setCursor_called = false;
+  int m_x = 0;
+  int m_y = 0;
+  const char* m_data = nullptr;
 };
 
-#endif /*main_Components_GPIO_include_HAL_GPIO_ESP32_hpp*/
+#endif /*main_Components_lcd_display_include_lcd_mock_hpp*/

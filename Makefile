@@ -27,7 +27,8 @@ monitor:
 # 3. Clean the project
 .PHONY: clean
 clean: 
-	  idf.py fullclean;
+	  rm -rf ./main/Components/build;
+#idf.py fullclean;
 
 
 # 4. Test the project
@@ -49,6 +50,11 @@ test: .build-test-env .run_test;
 .PHONY: open_coverage
 open_coverage:
 	  cd ./main/Components/build && env "BROWSER=firefox" && xdg-open ./reports/coverage/html/index.html;
+
+
+.PHONY: prettify
+prettify:
+	  sh ./tools/prettify.sh;
 
 .PHONY: help
 help: 

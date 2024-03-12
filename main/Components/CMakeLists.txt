@@ -79,6 +79,7 @@ add_library(ComponentModule STATIC)
 add_subdirectory(Timeservice)
 add_subdirectory(button)
 add_subdirectory(gpio)
+add_subdirectory(lcd_display)
 
 # Configure the library with source and include files.
 target_sources(ComponentModule PRIVATE ${CUSTOM_SRC_FILES})

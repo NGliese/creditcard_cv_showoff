@@ -5,24 +5,23 @@
  *      Author: espenv
  */
 
+#include <gtest/gtest.h>
 
 #include <iostream>
-
-#include <gtest/gtest.h>
 
 // Include the header for the code you want to test
 //#include "my_code.h"
 
 // Write test cases
 TEST(MyCodeTests, TestFunction1) {
-    // Arrange
-    // ...
+  // Arrange
+  // ...
 
-    // Act
-    // Call the function you want to test
+  // Act
+  // Call the function you want to test
 
-    // Assert
-    ASSERT_TRUE(true);
+  // Assert
+  ASSERT_TRUE(true);
 }
 
 // Define more test cases as needed
