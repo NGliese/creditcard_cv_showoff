@@ -53,7 +53,7 @@ class hal_base {
   virtual bool write(const uint8_t* data, const size_t size) = 0;
   virtual bool setCursor(int x, int y) = 0;
   bool is_initialized() const { return is_init; };
-  virtual bool test_display() = 0;
+  virtual bool test_display(const uint8_t cmd) = 0;
 
  protected:
   bool is_init;

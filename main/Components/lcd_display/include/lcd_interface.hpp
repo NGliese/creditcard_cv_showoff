@@ -89,13 +89,13 @@ class lcd_interface {
     return m_hal.setCursor(x, y);
   };
 
-  bool test_display() {
+  bool test_display(const uint8_t cmd) {
     // if init is not called, write a warning and return false
     if (!m_hal.is_initialized()) {
       std::cout << "lcd_interface::test_display: init not called" << std::endl;
       return false;
     }
-    return m_hal.test_display();
+    return m_hal.test_display(cmd);
   };
 
  protected:  // for testing

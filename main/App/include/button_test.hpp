@@ -38,6 +38,9 @@
 
 #include <iostream>
 
+#include <lcd_nhd_c12832a1z_esp_card_showoff.hpp>
+
+#include <lcd_interface.hpp>
 /*------------------------------------------------------------------------------+
  |                               Typedef |
  +------------------------------------------------------------------------------*/
@@ -51,6 +54,7 @@ class button_test {
   button_test(void);
   virtual ~button_test(void);
   void run(void);
+  void run_controlled_lcd(void);
 
   static void cb_sw1_button_pressed(void* obj);
   static void cb_sw2_button_pressed(void* obj);

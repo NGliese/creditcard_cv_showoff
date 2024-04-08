@@ -87,3 +87,44 @@ void button_test::run() {
     Timeservice::wait_ms(50);
   }
 }
+
+void button_test::run_controlled_lcd() {
+  std::cout << "This is the button test" << std::endl;
+  std::cout << "Press the button to see the result" << std::endl;
+  // Create a button object
+  Button<HAL_GPIO_ESP32> m_sw1_button(gpio_num_t::GPIO_NUM_21);
+  Button<HAL_GPIO_ESP32> m_sw2_button(gpio_num_t::GPIO_NUM_22);
+  // Install the interrupt
+  m_sw1_button.installInterrupt(HAL_GPIO_ESP32::io_intr_t::RISING_EDGE,
+                                &button_test::cb_sw1_button_pressed);
+  m_sw2_button.installInterrupt(HAL_GPIO_ESP32::io_intr_t::RISING_EDGE,
+                                &button_test::cb_sw2_button_pressed);
+  // Create a lcd object
+  lcd_interface<lcd_nhd_c12832a1z_esp_card_showoff> lcd;
+  // Clear the lcd
+  lcd.clear();
+  Timeservice::wait_ms(1000);
+  uint8_t icon_id = 0;
+  
+  while (1) {
+    if (sw1_button_pressed) {
+      m_sw1_button.disableInterrupt();
+      sw1_button_pressed = false;
+      std::cout << "SW1 Button pressed < " << sw1_button_count << " >"
+                << std::endl;
+      icon_id++;
+      m_sw1_button.enableInterrupt();
+    }
+
+    if (sw2_button_pressed) {
+      m_sw2_button.disableInterrupt();
+      sw2_button_pressed = false;
+      std::cout << "SW2 Button pressed < " << sw2_button_count << " >"
+                << std::endl;
+      icon_id--;
+      m_sw2_button.enableInterrupt();
+    }
+    lcd.test_display(icon_id);
+    Timeservice::wait_ms(50);
+  }
+}

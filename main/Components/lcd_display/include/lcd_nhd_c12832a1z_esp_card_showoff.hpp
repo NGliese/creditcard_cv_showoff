@@ -88,12 +88,13 @@ class lcd_nhd_c12832a1z_esp_card_showoff final : public hal_base {
   bool clear() override;
   bool write(const uint8_t* data, const size_t size) override;
   bool setCursor(int x, int y) override;
-  bool test_display() override; 
+  bool test_display(const uint8_t cmd) override; 
  private:
   bool send_command(const uint8_t data);
   GPIO_API<HAL_GPIO_ESP32> m_rst_pin;
   GPIO_API<HAL_GPIO_ESP32> m_cmd_pin;
   spi_esp32 m_spi;
+  uint8_t local_icon_id = -1;
 };
 
 #endif /*main_Components_lcd_display_include_lcd_nhd_c12832a1z_esp_card_showoff_hpp*/

@@ -106,7 +106,7 @@ void lcd_test::run() {
   //for(int i = 0; i < 10; i++)
   //{
   //lcd.write(FMRadio, sizeof(FMRadio));
-  lcd.test_display();
+  lcd.test_display(0);
   std::cout << "lcd_test::run: wait 1 sec" << std::endl;
   //}
 

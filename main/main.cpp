@@ -26,10 +26,11 @@ extern "C" void app_main(void) {
     RUN THE EXAMPLES BELOW ONE AT A TIME
   */
 
-  // button_test test;
+   button_test test;
+   test.run_controlled_lcd();
   //  test.run();
-  lcd_test lcd;
-   lcd.run();
+  //lcd_test lcd;
+  // lcd.run();
   // lcd.test_io();
   //lcd.test_spi();
   std::cout << "Stopping program" << std::endl;

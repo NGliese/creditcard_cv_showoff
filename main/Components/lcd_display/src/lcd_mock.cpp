@@ -74,6 +74,6 @@ bool lcd_mock::setCursor(int x, int y) {
   return true;
 }
 
-bool lcd_mock::test_display() {
+bool lcd_mock::test_display(const uint8_t cmd) {
   return true;
 }

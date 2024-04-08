@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 # Load the image
-img_path = '/home/gliese/project/creditcard_showoff/creditcard_cv_showoff/img/helloworld.png'
+img_path = '/home/gliese/project/creditcard_showoff/creditcard_cv_showoff/img/CV/name.png'
 img = Image.open(img_path)
 
 # convert the image to binary (1 bit per pixel) using dithering

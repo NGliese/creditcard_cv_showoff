@@ -54,7 +54,7 @@ class lcd_mock final : public hal_base {
   bool clear() override;
   bool write(const uint8_t* data, const size_t size) override;
   bool setCursor(int x, int y) override;
-  bool test_display() override;
+  bool test_display(const uint8_t cmd) override;
 
   // its ment to be public for testing
   bool m_init_called = false;
