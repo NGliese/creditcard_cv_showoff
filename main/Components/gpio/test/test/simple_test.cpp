@@ -98,7 +98,8 @@ TEST(MyCodeTests, install_interrupt) {
   // Act
   // Call the function you want to test
   // Assert
-  ASSERT_TRUE(gpio.getHal().installInterruptDriver(nullptr, HAL_MOCK::io_intr_t::RISING_EDGE));
+  ASSERT_TRUE(gpio.getHal().installInterruptDriver(
+      nullptr, HAL_MOCK::io_intr_t::RISING_EDGE));
   ASSERT_TRUE(gpio.getHal().m_isInterruptInstalled_called);
 }
 
@@ -123,4 +124,3 @@ TEST(MyCodeTests, disable_interrupt) {
   ASSERT_TRUE(gpio.disableInterrupt());
   ASSERT_FALSE(gpio.getHal().m_isInterruptEnabled_called);
 }
-

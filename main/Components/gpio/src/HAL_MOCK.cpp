@@ -41,7 +41,7 @@ bool HAL_MOCK::setValue(const HAL_BASE<int>::io_val_t& val) {
 }
 
 HAL_BASE<int>::io_val_t HAL_MOCK::getValue() const {
-  std::cout << "getValue in mock" << std::endl; 
+  std::cout << "getValue in mock" << std::endl;
   return HAL_BASE<int>::io_val_t::LOW;
 }
 

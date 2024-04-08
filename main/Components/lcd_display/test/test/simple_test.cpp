@@ -42,7 +42,7 @@ TEST(MyCodeTests, test_write) {
   // Arrange
   lcd_interface_mock<lcd_mock> lcd;
   // init the lcd
-  ASSERT_TRUE(lcd.write("Hello, World!"));
+  ASSERT_TRUE(lcd.write("Hello, World!", 13));
   // Assert
   ASSERT_TRUE(lcd.get_hal().m_write_called);
 }
@@ -51,7 +51,7 @@ TEST(MyCodeTests, test_write_data) {
   // Arrange
   lcd_interface_mock<lcd_mock> lcd;
   // init the lcd
-  ASSERT_TRUE(lcd.write("Hello, World!"));
+  ASSERT_TRUE(lcd.write("Hello, World!", 13));
   // Assert
   ASSERT_STREQ(lcd.get_hal().m_data, "Hello, World!");
 }

@@ -57,9 +57,7 @@ TEST(MyCodeTests, wait_10_ms) {
   ASSERT_TRUE(time_taken < 0.011);
 }
 
-
 TEST(MyCodeTests, get_millis) {
-  
   // get start time
   auto start_time = Timeservice::get_millis();
   // wait 100 ms
@@ -74,4 +72,3 @@ TEST(MyCodeTests, get_millis) {
   ASSERT_TRUE(time_taken > 99);
   ASSERT_TRUE(time_taken < 101);
 }
-

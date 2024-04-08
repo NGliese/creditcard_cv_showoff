@@ -48,6 +48,7 @@ class Timeservice {
   friend class friend_Timeservice;
 #endif
  public:
+  static void wait_ns(uint64_t ns);  // this is a blocking function
   static void wait_us(uint64_t us);  // this is a blocking function
   // none of the following wait functions must be blocking
   static void wait_ms(uint64_t ms);

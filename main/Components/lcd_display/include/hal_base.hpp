@@ -48,11 +48,12 @@ class hal_base {
   hal_base(void) : is_init{false} {};
   virtual ~hal_base(void){};
   virtual bool init() = 0;
-  virtual bool deinit() =0;
-  virtual bool clear() =0;
-  virtual bool write(const char* data) = 0;
+  virtual bool deinit() = 0;
+  virtual bool clear() = 0;
+  virtual bool write(const uint8_t* data, const size_t size) = 0;
   virtual bool setCursor(int x, int y) = 0;
   bool is_initialized() const { return is_init; };
+  virtual bool test_display() = 0;
 
  protected:
   bool is_init;

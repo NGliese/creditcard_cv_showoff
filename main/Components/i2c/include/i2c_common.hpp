@@ -1,26 +1,27 @@
-#ifndef main_App_include_lcd_test_hpp
-#define main_App_include_lcd_test_hpp
+#ifndef _COMPONENTS_PROTOCOLS_I2C_INCLUDE_I2C_COMMON_HPP_
+#define _COMPONENTS_PROTOCOLS_I2C_INCLUDE_I2C_COMMON_HPP_
 /*------------------------------------------------------------------------------+
  |   		 	C L A S S   I N F O R M A T I O N |
  +------------------------------------------------------------------------------+
  |  ToDo: check auto generated function comment
  |
- |  Function Name:  lcd_test.hpp
+ |  @file  i2c_common.hpp
  |
- |  Author       :  Nikolaj Gliese Pedersen
- |  Email 	      :  <nikolajgliese@tutanota.com>
+ |  @author        :  Nikolaj Gliese Pedersen
+ |  @email         :  <nikolajgliese@tutanota.com>
+ |  @date		   : 2022-04-07
  |
- |  Description  :  This class, lcd_test.hpp, is designed as:
- |
- |
- |
+ |  @brief  	   :  This class, i2c_common.hpp, is designed as:
  |
  |
  |
  |
- |  version       : 1.0
  |
- |  Return Value  :   return_type
+ |
+ |
+ |  @version       : 1.0
+ |
+ |  @bug  		   :   no known bugs
  |
  +-----------------------------------------------------------------------------*/
 
@@ -28,28 +29,26 @@
  |   		 					Includes |
  +------------------------------------------------------------------------------*/
 
-/*----------------- DEFAULT INCLUDE
- * -------------------------------------------*/
-
-/*-----------------------------------------------------------------------------*/
-
-#include <iostream>
-
+#include <stdint.h>
+/*------------------------------------------------------------------------------+
+ |                               Typedef |
+ +------------------------------------------------------------------------------*/
+#ifdef __ESP32__
+#include <driver/gpio.h>
+#else
+typedef int gpio_num_t;
+#endif
 /*------------------------------------------------------------------------------+
  |                               Typedef |
  +------------------------------------------------------------------------------*/
 
-/*------------------------------------------------------------------------------+
- |   		 					 Class |
- +------------------------------------------------------------------------------*/
+struct i2c_conf_t {
+  uint32_t speed;       // 100k Hz default
+  gpio_num_t pin_sda;   // gpio pin for sda
+  gpio_num_t pin_sclk;  // pgio pin for clk
 
-class lcd_test {
- public:
-  lcd_test(void);
-  virtual ~lcd_test(void);
-  void run();
-  void test_io();
-  void test_spi();
+  i2c_conf_t(gpio_num_t scl, gpio_num_t sda, uint32_t speed)
+      : speed(speed), pin_sda(sda), pin_sclk(scl) {}
 };
 
-#endif /*main_App_include_lcd_test_hpp*/
+#endif  //_COMPONENTS_PROTOCOLS_I2C_INCLUDE_I2C_COMMON_HPP_

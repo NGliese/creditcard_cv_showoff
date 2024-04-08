@@ -55,9 +55,9 @@ class lcd_interface {
       std::cout << "lcd_interface::init: hal init failed" << std::endl;
     }
   };
-  virtual ~lcd_interface(void) {  
-      // deinitialize the hal
-      std::cout << "lcd_interface::deinit: deinit called" << std::endl;
+  virtual ~lcd_interface(void) {
+    // deinitialize the hal
+    std::cout << "lcd_interface::deinit: deinit called" << std::endl;
     const auto ret = m_hal.deinit();
     // if the hal is not deinitialized, write a warning
     if (!ret) {
@@ -72,13 +72,13 @@ class lcd_interface {
     }
     return m_hal.clear();
   };
-  bool write(const char* data) {
+  bool write(const uint8_t* data, const size_t size) {
     // if init is not called, write a warning and return false
     if (!m_hal.is_initialized()) {
       std::cout << "lcd_interface::write: init not called" << std::endl;
       return false;
     }
-    return m_hal.write(data);
+    return m_hal.write(data, size);
   };
   bool setCursor(int x, int y) {
     // if init is not called, write a warning and return false
@@ -87,6 +87,15 @@ class lcd_interface {
       return false;
     }
     return m_hal.setCursor(x, y);
+  };
+
+  bool test_display() {
+    // if init is not called, write a warning and return false
+    if (!m_hal.is_initialized()) {
+      std::cout << "lcd_interface::test_display: init not called" << std::endl;
+      return false;
+    }
+    return m_hal.test_display();
   };
 
  protected:  // for testing

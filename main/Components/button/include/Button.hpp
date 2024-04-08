@@ -48,7 +48,7 @@
 template <typename HAL = HAL_BASE<int>>
 class Button {
  public:
-  Button(const HAL::pin_type_t& pin) : m_gpio(pin) {
+  Button(const typename HAL::pin_type_t& pin) : m_gpio(pin) {
     // button is always input
     auto res = m_gpio.setToInput();
     if (res == false) {

@@ -28,6 +28,10 @@ idf_component_register(SRC_DIRS "."
              INCLUDE_DIRS "./Components/button/include"
                 SRC_DIRS "./Components/lcd_display/src"
                 INCLUDE_DIRS "./Components/lcd_display/include"
+                  SRC_DIRS "./Components/i2c/src"
+                  INCLUDE_DIRS "./Components/i2c/include"
+                  SRC_DIRS "./Components/spi/src"
+                  INCLUDE_DIRS "./Components/spi/include"
              )
 
 

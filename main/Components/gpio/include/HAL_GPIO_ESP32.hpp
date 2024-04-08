@@ -49,9 +49,8 @@ typedef int gpio_num_t;
  +------------------------------------------------------------------------------*/
 
 class HAL_GPIO_ESP32 final : public HAL_BASE<gpio_num_t> {
-  typedef gpio_num_t pin_type_t;
-
  public:
+  typedef gpio_num_t pin_type_t;
   HAL_GPIO_ESP32(const gpio_num_t& pin) : HAL_BASE<gpio_num_t>(pin) {
     std::cout << "HAL_GPIO_ESP32: " << pin << std::endl;
   };

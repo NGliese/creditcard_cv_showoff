@@ -50,10 +50,11 @@ class lcd_mock final : public hal_base {
   lcd_mock(void);
   virtual ~lcd_mock(void);
   bool init() override;
-    bool deinit() override;
+  bool deinit() override;
   bool clear() override;
-  bool write(const char* data) override;
+  bool write(const uint8_t* data, const size_t size) override;
   bool setCursor(int x, int y) override;
+  bool test_display() override;
 
   // its ment to be public for testing
   bool m_init_called = false;
@@ -62,7 +63,7 @@ class lcd_mock final : public hal_base {
   bool m_setCursor_called = false;
   int m_x = 0;
   int m_y = 0;
-  const char* m_data = nullptr;
+  const uint8_t* m_data = nullptr;
 };
 
 #endif /*main_Components_lcd_display_include_lcd_mock_hpp*/

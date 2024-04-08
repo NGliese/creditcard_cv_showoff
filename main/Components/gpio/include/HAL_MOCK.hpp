@@ -64,7 +64,6 @@ class HAL_MOCK final : public HAL_BASE<int> {
   bool m_isInterruptInstalled_called = false;
   bool m_isDirectionSet_called = false;
   bool m_isValueSet_called = false;
-
 };
 
 #endif /*main_Components_GPIO_include_HAL_MOCK_hpp*/

@@ -43,8 +43,8 @@ bool lcd_mock::deinit() {
 #ifdef DEBUG
   std::cout << LOG_TAG << ": deinit" << std::endl;
 #endif
-    is_init = false;
-    return true;
+  is_init = false;
+  return true;
 }
 
 bool lcd_mock::clear() {
@@ -55,7 +55,7 @@ bool lcd_mock::clear() {
   return true;
 }
 
-bool lcd_mock::write(const char* data) {
+bool lcd_mock::write(const uint8_t* data, const size_t size) {
 #ifdef DEBUG
   std::cout << LOG_TAG << ": write" << std::endl;
 #endif
@@ -71,5 +71,9 @@ bool lcd_mock::setCursor(int x, int y) {
   m_x = x;
   m_y = y;
   m_setCursor_called = true;
+  return true;
+}
+
+bool lcd_mock::test_display() {
   return true;
 }

@@ -29,6 +29,8 @@ extern "C" void app_main(void) {
   // button_test test;
   //  test.run();
   lcd_test lcd;
-  lcd.run();
+   lcd.run();
+  // lcd.test_io();
+  //lcd.test_spi();
   std::cout << "Stopping program" << std::endl;
 }

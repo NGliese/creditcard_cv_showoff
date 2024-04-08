@@ -40,6 +40,25 @@
 static const char* LOG_TAG = "Timeservice";
 #endif
 
+void Timeservice::wait_ns(uint64_t ns) {
+#ifdef DEBUG
+  std::cout << LOG_TAG << ": wait_ns" << std::endl;
+#endif
+#ifdef __ESP32__
+  // see if ns is less than 1 ms
+  if (ns < 1000000) {
+    // we dont have a freertos tick less than 1 ms, therefor we use usleep
+    usleep(ns / 1000);
+    return;
+  } else {
+    // convert to ms and call wait_ms
+    Timeservice::wait_ms(ns / 1000000);
+  }
+#else
+  std::this_thread::sleep_for(std::chrono::nanoseconds(ns));
+#endif
+}
+
 void Timeservice::wait_us(uint64_t us) {
 #ifdef DEBUG
   std::cout << LOG_TAG << ": wait_us" << std::endl;
